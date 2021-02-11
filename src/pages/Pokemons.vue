@@ -1,38 +1,33 @@
 <template>
-  <div class="container">
-      <div class="row">
-          <div class="col-12">
-              <div class="d-flex flex-wrap justify-content-center">
-                  <div v-for="(pokemon, index) in pokemons" :key="index" class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            {{ pokemon.name }}
-                        </h5>
-                        <p>
-                            {{ pokemon.url }}
-                        </p>
-                    </div>
-              </div>
-          </div>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex flex-wrap justify-content-center">
+                    <Card v-for="(pokemon, index) in pokemons" :key="index" :name="pokemon.name" :text="pokemon.url" />
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-export default {
-    name: "Pokemons",
-    data(){
-        return{
-            pokemons: []
+    import Card from "./../components/Card.vue";
+    export default {
+        name: "Pokemons",
+        components: {
+            Card
+        },
+        data(){
+            return{
+                pokemons: []
+            }
+        },
+        mounted(){
+            const self = this;
+            this.axios.get(this.base_url + 'pokemon').then(response =>{
+                console.log(response.data.results);
+                self.pokemons = response.data.results;
+            });
         }
-    },
-    mounted(){
-        const self = this;
-        this.axios.get(this.base_url + 'pokemon').then(response =>{
-            console.log(response.data.results);
-            self.pokemons = response.data.results;
-        });
-    }
-};
+    };
 </script>
