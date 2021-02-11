@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                <Form />
                 <div class="d-flex flex-wrap justify-content-center">
                     <Card v-for="(pokemon, index) in pokemons" :key="index" :name="pokemon.name" :text="pokemon.url" />
                 </div>
@@ -12,10 +13,13 @@
 
 <script>
     import Card from "./../components/Card.vue";
+    import Form from "./../components/Form.vue";
+
     export default {
         name: "Pokemons",
         components: {
-            Card
+            Card,
+            Form
         },
         data(){
             return{

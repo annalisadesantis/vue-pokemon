@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
-     <CustomTitle :title="message" :subtitle="subtitle"/>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <!-- <HelloWorld msg="ciao a tutti" /> -->
-    <Pokemons />
-  </div>
+    <div id="app">
+        <CustomTitle :title="message" :subtitle="subtitle"/>
+        <img alt="Vue logo" src="./assets/logo.png" />
+        <!-- <HelloWorld msg="ciao a tutti" /> -->
+        <Pokemons />
+    </div>
 </template>
 
 <script>
